@@ -17,12 +17,15 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				@Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 			</div>
-			<div class="navbar-collapse collapse">
+			<div class="navbar-collapse collapse" style="display: none;" id="main_navbar">
 				<ul class="nav navbar-nav">
-					<li>@Html.ActionLink("Домашняя страница", "Index", "Home", new { area = "" }, null)</li>
-					<li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+					<li><a href="#" data-bind="click: goToHome">ToDo</a></li>
+					@*<li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>*@
+					<!--ko if: page() == 'Home'-->
+					<li><a href="#">Здравствуйте, <span data-bind="text: user"></span>!</a></li>
+					<li><a href="#" data-bind="click: logout">Выход</a></li>
+					<!--/ko-->
 				</ul>
 			</div>
 		</div>
@@ -31,7 +34,7 @@
 		@RenderBody()
 		<hr />
 		<footer>
-			<p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
+			<p>&copy; @DateTime.Now.Year – ToDo</p>
 		</footer>
 	</div>
 

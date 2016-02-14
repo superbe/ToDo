@@ -1,10 +1,12 @@
-﻿function ViewModel() {
+﻿function toDoViewModel(links) {
 	var self = this;
 
 	var tokenKey = 'accessToken';
 
 	self.result = ko.observable();
 	self.user = ko.observable();
+	self.links = ko.observable(links);
+	self.page = ko.observable();
 
 	self.registerEmail = ko.observable();
 	self.registerPassword = ko.observable();
@@ -13,78 +15,67 @@
 	self.loginEmail = ko.observable();
 	self.loginPassword = ko.observable();
 
-	function showError(jqXHR) {
-		self.result(jqXHR.status + ': ' + jqXHR.statusText);
+	// Обработка ошибки.
+	function error(result) {
+		self.result(result.status + ': ' + result.statusText);
 	}
 
-	self.callApi = function () {
-		self.result('');
-
-		var token = sessionStorage.getItem(tokenKey);
-		var headers = {};
-		if (token) {
-			headers.Authorization = 'Bearer ' + token;
-		}
-
-
-
-		$.ajax({
-			type: 'GET',
-			url: '/api/values',
-			headers: headers
-		}).done(function (data) {
-			self.result(data);
-		}).fail(showError);
-	}
-
+	// Регистрация нового пользователя.
 	self.register = function () {
 		self.result('');
-
-		var data = {
+		jsonRequest(self.links().register, 'POST', {
 			Email: self.registerEmail(),
 			Password: self.registerPassword(),
 			ConfirmPassword: self.registerPassword2()
-		};
-
-
-
-		$.ajax({
-			type: 'POST',
-			url: '/api/Account/Register',
-			contentType: 'application/json; charset=utf-8',
-			data: JSON.stringify(data)
-		}).done(function (data) {
+		}, function (data, a, b) {
 			self.result("Done!");
-		}).fail(showError);
+		}, error);
+		self.goToPage('Login')
 	}
 
+	// Вход.
 	self.login = function () {
 		self.result('');
-
-		var loginData = {
+		request(self.links().login, 'POST', {
 			grant_type: 'password',
 			username: self.loginEmail(),
 			password: self.loginPassword()
-		};
-
-
-
-		$.ajax({
-			type: 'POST',
-			url: '/Token',
-			data: loginData
-		}).done(function (data) {
+		}, function (data, a, b) {
 			self.user(data.userName);
-			// Cache the access token in session storage.
 			sessionStorage.setItem(tokenKey, data.access_token);
-		}).fail(showError);
+			self.goToPage('Home')
+		}, error);
 	}
 
+	// Выход.
 	self.logout = function () {
 		self.user('');
 		sessionStorage.removeItem(tokenKey)
+		self.goToPage('Login')
 	}
-}
 
-var app = new ViewModel();
-ko.applyBindings(app);
+	self.goToPage = function (page) {
+		self.page(page);
+	};
+
+	self.goToHome = function () {
+		if (isNull(self.user()))
+			self.goToPage('Login');
+		else
+			self.goToPage('Home');
+	};
+
+	self.goToRegister = function () {
+		self.logout();
+		self.goToPage('register');
+	};
+
+	self.goToLogin = function () {
+		self.logout();
+		self.goToPage('Login');
+	};
+
+	self.goToPage('Login')
+	$('#section_content').show();
+	$('#main_navbar').show();
+}

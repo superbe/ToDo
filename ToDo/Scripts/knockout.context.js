@@ -29,51 +29,21 @@ window.toJavaScriptDate = function (value) {
 // Запрос.
 // uri - адрес запроса.
 // method - метод HTTP запроса (GET, POST).
+// data - передаваемые данные.
 // callback - обработчик ответа запроса.
 // error - обработчик ошибки запроса.
-// data - передаваемые данные.
-window.sendAjaxRequest = function (uri, method, callback, error, data) {
-	$.ajax({
-		url: uri,
-		type: method,
-		contentType: 'application/json; charset=utf-8',
-		data: JSON.stringify(data),
-		success: callback,
-		error: function (exception) {
-			logger.log('url: ' + uri);
-			logger.data('data:', requestData);
-			logger.error(exception);
-		}
-	}).fail(error);
+window.jsonRequest = function (uri, method, data, callback, error) {
+	$.ajax({ url: uri, type: method, contentType: 'application/json; charset=utf-8', data: JSON.stringify(data) }).done(callback).fail(error);
 };
 
-// Загрузка файла на сервер.
-// files - Загружаемый файл.
+// Запрос.
+// uri - адрес запроса.
+// method - метод HTTP запроса (GET, POST).
+// data - передаваемые данные.
 // callback - обработчик ответа запроса.
-window.fileUpload = function (uri, files, callback) {
-	if (files.length > 0) {
-		if (window.FormData !== undefined) {
-			var formData = new FormData();
-			for (var i = 0; i < files.length; i++)
-				formData.append('imageFile-' + i, files[i]);
-
-			$.ajax({
-				type: "POST",
-				url: uri,
-				contentType: false,
-				processData: false,
-				data: formData,
-				success: callback,
-				error: function (exception) {
-					logger.log('url: ' + uri);
-					logger.data('files:', files);
-					logger.error(exception);
-				}
-			});
-		} else {
-			alert("Этот браузер не поддерживает загрузку файлов стандарта HTML5!");
-		}
-	}
+// error - обработчик ошибки запроса.
+window.request = function (uri, method, data, callback, error) {
+	$.ajax({ type: method, url: uri, data: data }).done(callback).fail(error);
 };
 
 // Логирование.
