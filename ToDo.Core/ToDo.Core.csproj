@@ -45,13 +45,8 @@
     <Compile Include="Model\Importance.cs" />
     <Compile Include="Model\ITask.cs" />
     <Compile Include="Model\Prototype.cs" />
-    <Compile Include="Model\SubTask.cs" />
     <Compile Include="Model\Task.cs" />
-    <Compile Include="Model\TaskList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ToDoDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

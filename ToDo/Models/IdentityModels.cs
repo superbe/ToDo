@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using ToDo.Core;
 
 namespace ToDo.Models
 {
@@ -28,5 +30,9 @@ namespace ToDo.Models
 		{
 			return new ApplicationDbContext();
 		}
+
+		public DbSet<Importance> Importances { get; set; }
+
+		public DbSet<Core.Task> Tasks { get; set; }
 	}
 }

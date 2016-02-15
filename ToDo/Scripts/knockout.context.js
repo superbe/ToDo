@@ -33,7 +33,7 @@ window.toJavaScriptDate = function (value) {
 // callback - обработчик ответа запроса.
 // error - обработчик ошибки запроса.
 window.jsonRequest = function (uri, method, data, callback, error) {
-	$.ajax({ url: uri, type: method, contentType: 'application/json; charset=utf-8', data: JSON.stringify(data) }).done(callback).fail(error);
+	$.ajax({ url: uri, type: method, dataType: 'json', data: data }).done(callback).fail(error);
 };
 
 // Запрос.

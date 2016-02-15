@@ -31,22 +31,9 @@ namespace ToDo.Core
 		public string Description { get; set; }
 
 		/// <summary>
-		/// Список задач.
-		/// </summary>
-		[DisplayName("Список задач")]
-		public Guid TaskListID { get; set; }
-		public virtual TaskList TaskList { get; set; }
-
-		/// <summary>
 		/// Важность задачи.
 		/// </summary>
 		[DisplayName("Важность задачи")]
-		public Guid ImportanceID { get; set; }
-		public virtual Importance Importance { get; set; }
-
-		/// <summary>
-		/// Подзадачи текущего списка подзадач.
-		/// </summary>
-		public virtual IList<SubTask> SubTasks { get; set; }
+		public int ImportanceID { get; set; }
 	}
 }

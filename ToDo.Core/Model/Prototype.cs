@@ -21,7 +21,8 @@ namespace ToDo.Core
 		/// <remarks>Реализация интерфейса ITask.</remarks>
 		[Key]
 		[HiddenInput]
-		public Guid Id { get; set; }
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		public int Id { get; set; }
 
 		/// <summary>
 		/// Идентификатор собственника (UserId).

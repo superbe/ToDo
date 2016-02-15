@@ -14,7 +14,7 @@ namespace ToDo.Core
 		/// <summary>
 		/// Идентификатор.
 		/// </summary>
-		Guid Id { get; set; }
+		int Id { get; set; }
 
 		/// <summary>
 		/// Идентификатор собственника (UserId).
