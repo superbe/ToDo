@@ -32,12 +32,12 @@ namespace ToDo.Controllers
 			ApplicationUser user = db.Users.FirstOrDefault(x => x.Email == userName);
 
 			List<Task> result = string.IsNullOrWhiteSpace(text) ? db.Tasks.Where(x => x.Owner == user.Id).ToList() : db.Tasks.Where(x => x.Owner == user.Id && (x.Title.Contains(text) || x.Description.Contains(text))).ToList();
-			switch(filter) {
-				case 0: return result.OrderBy(x => x.ImportanceID);
-				case 1: return result.OrderBy(x => x.Created);
-				default:
-					return result;
-			}
+			//switch(filter) {
+			//	case 0: return result.OrderBy(x => x.ImportanceID);
+			//	case 1: return result.OrderBy(x => x.Created);
+			//	default:
+			return result;
+			//}
 		}
 
 		// GET: api/Tasks/5
@@ -55,14 +55,14 @@ namespace ToDo.Controllers
 
 		// PUT: api/Tasks/5
 		[ResponseType(typeof(void))]
-		public IHttpActionResult PutTask(int id, Task task)
+		public IHttpActionResult PutTask(string id, Task task)
 		{
 			if (!ModelState.IsValid)
 			{
 				return BadRequest(ModelState);
 			}
 
-			if (id != task.Id)
+			if (id != task.Id.ToString())
 			{
 				return BadRequest();
 			}
@@ -128,9 +128,9 @@ namespace ToDo.Controllers
 			base.Dispose(disposing);
 		}
 
-		private bool TaskExists(int id)
+		private bool TaskExists(string id)
 		{
-			return db.Tasks.Count(e => e.Id == id) > 0;
+			return db.Tasks.Count(e => e.Id.ToString() == id) > 0;
 		}
 	}
 }

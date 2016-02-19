@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ToDo.Core.ColorClass">
+    <Position X="1" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Model\ColorClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ToDo.Core.Directory" Collapsed="true">
+    <Position X="3.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAACAAAAAAAAABAAAAAQAAAAAAAQAAAAgAAAAAAA=</HashCode>
+      <FileName>Model\Directory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ToDo.Core.Goal">
+    <Position X="0.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Model\Goal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ToDo.Core.IconClass">
+    <Position X="5.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Model\IconClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ToDo.Core.Prototype">
+    <Position X="2" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAACAAAAgAEAABAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Prototype.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ToDo.Core.State">
+    <Position X="3.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAACAKAAAAAAA=</HashCode>
+      <FileName>Model\State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ToDo.Core.SubTask">
+    <Position X="3" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Model\SubTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ToDo.Core.Task">
+    <Position X="3" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAEgAAAAAAAQIAAAAAAAgACAABAAAAAA=</HashCode>
+      <FileName>Model\Task.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ToDo.Core.ITask" Collapsed="true">
+    <Position X="8" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAACAAAAAAAAABAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ITask.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace ToDo.Core
 {
@@ -16,24 +10,37 @@ namespace ToDo.Core
 	public class Task : Prototype
 	{
 		/// <summary>
-		/// Название объекта списка задач.
+		/// Состояние исполнения задачи.
 		/// </summary>
-		[DisplayName("Название")]
-		[StringLength(1024)]
-		[Required(ErrorMessage = "Введите название")]
-		public string Title { get; set; }
+		[DisplayName("Состояние исполнения")]
+		public Guid StateID { get; set; }
+		public virtual State State { get; set; }
 
 		/// <summary>
-		/// Описание объекта списка задач.
+		/// Цель.
 		/// </summary>
-		[DisplayName("Описание")]
-		[StringLength(4096)]
-		public string Description { get; set; }
+		[DisplayName("Цель")]
+		public Guid GoalId { get; set; }
+		public virtual Goal Goal { get; set; }
 
 		/// <summary>
-		/// Важность задачи.
+		/// Важность.
 		/// </summary>
-		[DisplayName("Важность задачи")]
-		public int ImportanceID { get; set; }
+		public int Importance { get; set; }
+
+		/// <summary>
+		/// Сроки оценки выполнения задачи.
+		/// </summary>
+		public double Estimate { get; set; }
+
+		/// <summary>
+		/// Описание желаемого рузультата.
+		/// </summary>
+		public string Result { get; set; }
+
+		/// <summary>
+		/// Подзадачи.
+		/// </summary>
+		public virtual IList<SubTask> SubTasks { get; set; }
 	}
 }

@@ -12,105 +12,105 @@ namespace ToDo.Controllers
 {
 	public class ImportancesController : ApiController
 	{
-		private ApplicationDbContext db = new ApplicationDbContext();
+		//private ApplicationDbContext db = new ApplicationDbContext();
 
-		// GET: api/Importances
-		public IEnumerable<Importance> GetImportances()
-		{
-			return db.Importances.ToList();
-		}
+		//// GET: api/Importances
+		//public IEnumerable<Importance> GetImportances()
+		//{
+		//	return db.Importances.ToList();
+		//}
 
-		// GET: api/Importances/5
-		[ResponseType(typeof(Importance))]
-		public IHttpActionResult GetImportance(int id)
-		{
-			Importance importance = db.Importances.Find(id);
-			if (importance == null)
-			{
-				return NotFound();
-			}
+		//// GET: api/Importances/5
+		//[ResponseType(typeof(Importance))]
+		//public IHttpActionResult GetImportance(int id)
+		//{
+		//	Importance importance = db.Importances.Find(id);
+		//	if (importance == null)
+		//	{
+		//		return NotFound();
+		//	}
 
-			return Ok(importance);
-		}
+		//	return Ok(importance);
+		//}
 
-		// PUT: api/Importances/5
-		[ResponseType(typeof(void))]
-		public IHttpActionResult PutImportance(int id, Importance importance)
-		{
-			if (!ModelState.IsValid)
-			{
-				return BadRequest(ModelState);
-			}
+		//// PUT: api/Importances/5
+		//[ResponseType(typeof(void))]
+		//public IHttpActionResult PutImportance(int id, Importance importance)
+		//{
+		//	if (!ModelState.IsValid)
+		//	{
+		//		return BadRequest(ModelState);
+		//	}
 
-			if (id != importance.Id)
-			{
-				return BadRequest();
-			}
+		//	if (id != importance.Id)
+		//	{
+		//		return BadRequest();
+		//	}
 
-			db.Entry(importance).State = EntityState.Modified;
+		//	db.Entry(importance).State = EntityState.Modified;
 
-			try
-			{
-				db.SaveChanges();
-			}
-			catch (DbUpdateConcurrencyException)
-			{
-				if (!ImportanceExists(id))
-				{
-					return NotFound();
-				}
-				else
-				{
-					throw;
-				}
-			}
+		//	try
+		//	{
+		//		db.SaveChanges();
+		//	}
+		//	catch (DbUpdateConcurrencyException)
+		//	{
+		//		if (!ImportanceExists(id))
+		//		{
+		//			return NotFound();
+		//		}
+		//		else
+		//		{
+		//			throw;
+		//		}
+		//	}
 
-			return StatusCode(HttpStatusCode.NoContent);
-		}
+		//	return StatusCode(HttpStatusCode.NoContent);
+		//}
 
-		// POST: api/Importances
-		[ResponseType(typeof(Importance))]
-		public IHttpActionResult PostImportance(Importance importance)
-		{
-			if (!ModelState.IsValid)
-			{
-				return BadRequest(ModelState);
-			}
+		//// POST: api/Importances
+		//[ResponseType(typeof(Importance))]
+		//public IHttpActionResult PostImportance(Importance importance)
+		//{
+		//	if (!ModelState.IsValid)
+		//	{
+		//		return BadRequest(ModelState);
+		//	}
 
-			db.Importances.Add(importance);
-			db.SaveChanges();
+		//	db.Importances.Add(importance);
+		//	db.SaveChanges();
 
-			return CreatedAtRoute("DefaultApi", new { id = importance.Id }, importance);
-		}
+		//	return CreatedAtRoute("DefaultApi", new { id = importance.Id }, importance);
+		//}
 
-		// DELETE: api/Importances/5
-		[ResponseType(typeof(Importance))]
-		public IHttpActionResult DeleteImportance(int id)
-		{
-			Importance importance = db.Importances.Find(id);
-			if (importance == null)
-			{
-				return NotFound();
-			}
+		//// DELETE: api/Importances/5
+		//[ResponseType(typeof(Importance))]
+		//public IHttpActionResult DeleteImportance(int id)
+		//{
+		//	Importance importance = db.Importances.Find(id);
+		//	if (importance == null)
+		//	{
+		//		return NotFound();
+		//	}
 
-			db.Importances.Remove(importance);
-			db.SaveChanges();
+		//	db.Importances.Remove(importance);
+		//	db.SaveChanges();
 
-			return Ok(importance);
-		}
+		//	return Ok(importance);
+		//}
 
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing)
-			{
-				db.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+		//protected override void Dispose(bool disposing)
+		//{
+		//	if (disposing)
+		//	{
+		//		db.Dispose();
+		//	}
+		//	base.Dispose(disposing);
+		//}
 
-		private bool ImportanceExists(int id)
-		{
-			return db.Importances.Count(e => e.Id == id) > 0;
-		}
+		//private bool ImportanceExists(int id)
+		//{
+		//	return db.Importances.Count(e => e.Id == id) > 0;
+		//}
 	}
 }

@@ -7,27 +7,12 @@ using System.Web.Mvc;
 namespace ToDo.Core
 {
 	/// <summary>
-	/// Прототип свойств основных объектов списка задач.
+	/// Прототип элемента справочника.
 	/// </summary>
-	public abstract class Prototype : ITask
+	public abstract class Directory : ITask
 	{
 		/// <summary>
-		/// Название объекта списка задач.
-		/// </summary>
-		[DisplayName("Название")]
-		[StringLength(1024)]
-		[Required(ErrorMessage = "Введите название")]
-		public string Title { get; set; }
-
-		/// <summary>
-		/// Описание объекта списка задач.
-		/// </summary>
-		[DisplayName("Описание")]
-		[StringLength(4096)]
-		public string Description { get; set; }
-
-		/// <summary>
-		/// Идентификатор объекта списка задач.
+		/// Идентификатор элемента справочника.
 		/// </summary>
 		/// <remarks>Реализация интерфейса ITask.</remarks>
 		[Key]
@@ -44,7 +29,7 @@ namespace ToDo.Core
 		public string Owner { get; set; }
 
 		/// <summary>
-		/// Дата создания.
+		/// Дата создания элемента справочника.
 		/// </summary>
 		/// <remarks>Реализация интерфейса ITask.</remarks>
 		[Required]
@@ -53,12 +38,28 @@ namespace ToDo.Core
 		public DateTime Created { get; set; }
 
 		/// <summary>
-		/// Дата последнего изменения.
+		/// Дата последнего изменения элемента справочника.
 		/// </summary>
 		/// <remarks>Реализация интерфейса ITask.</remarks>
 		[Required]
 		[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
 		[HiddenInput]
 		public DateTime Changed { get; set; }
+
+		/// <summary>
+		/// Название элемента справочника.
+		/// </summary>
+		[DisplayName("Название элемента справочника")]
+		[StringLength(1024)]
+		[Required(ErrorMessage = "Введите название элемента справочника")]
+		public string Name { get; set; }
+
+		/// <summary>
+		/// Значение элемента справочника.
+		/// </summary>
+		[DisplayName("Значение элемента справочника")]
+		[StringLength(1024)]
+		[Required(ErrorMessage = "Введите значение элемента справочника")]
+		public string Value { get; set; }
 	}
 }

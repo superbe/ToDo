@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ToDo.Core
 {
@@ -14,7 +10,7 @@ namespace ToDo.Core
 		/// <summary>
 		/// Идентификатор.
 		/// </summary>
-		int Id { get; set; }
+		Guid Id { get; set; }
 
 		/// <summary>
 		/// Идентификатор собственника (UserId).

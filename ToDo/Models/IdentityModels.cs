@@ -31,8 +31,11 @@ namespace ToDo.Models
 			return new ApplicationDbContext();
 		}
 
-		public DbSet<Importance> Importances { get; set; }
-
+		public DbSet<ColorClass> ColorClasses { get; set; }
+		public DbSet<Goal> Goals { get; set; }
+		public DbSet<IconClass> IconClasses { get; set; }
+		public DbSet<State> States { get; set; }
+		public DbSet<SubTask> SubTasks { get; set; }
 		public DbSet<Core.Task> Tasks { get; set; }
 	}
 }
