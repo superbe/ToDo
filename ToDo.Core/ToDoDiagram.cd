@@ -44,18 +44,18 @@
       <FileName>Model\State.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ToDo.Core.SubTask">
-    <Position X="3" Y="12.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAEAAAAAAAAA=</HashCode>
-      <FileName>Model\SubTask.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="ToDo.Core.Task">
     <Position X="3" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAAAAAAAAAEgAAAAAAAQIAAAAAAAgACAABAAAAAA=</HashCode>
       <FileName>Model\Task.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ToDo.Core.SubTask">
+    <Position X="3" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Model\SubTask.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="ToDo.Core.ITask" Collapsed="true">
