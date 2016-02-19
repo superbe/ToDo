@@ -41,6 +41,14 @@ namespace ToDo.Core
 		/// <summary>
 		/// Подзадачи.
 		/// </summary>
-		public virtual IList<SubTask> SubTasks { get; set; }
+		public virtual ICollection<SubTask> SubTasks { get; set; }
+
+		/// <summary>
+		/// Конструктор.
+		/// </summary>
+		public Task()
+		{
+			SubTasks = new HashSet<SubTask>();
+		}
 	}
 }

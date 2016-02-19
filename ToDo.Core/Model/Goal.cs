@@ -10,6 +10,14 @@ namespace ToDo.Core
 		/// <summary>
 		/// Задачи цели.
 		/// </summary>
-		public virtual IList<Task> Tasks { get; set; }
+		public virtual ICollection<Task> Tasks { get; set; }
+
+		/// <summary>
+		/// Конструктор.
+		/// </summary>
+		public Goal()
+		{
+			Tasks = new HashSet<Task>();
+		}
 	}
 }

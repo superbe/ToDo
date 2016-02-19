@@ -43,9 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\ColorClass.cs" />
-    <Compile Include="Model\Directory.cs" />
+    <Compile Include="Model\ReferenceBook.cs" />
     <Compile Include="Model\Goal.cs" />
     <Compile Include="Model\IconClass.cs" />
+    <Compile Include="Model\IReferenceBook.cs" />
     <Compile Include="Model\State.cs" />
     <Compile Include="Model\ITask.cs" />
     <Compile Include="Model\Prototype.cs" />
