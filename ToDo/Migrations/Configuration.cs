@@ -1,24 +1,31 @@
 namespace ToDo.Migrations
 {
-	using Core;
-	using Models;
+	using System;
+	using System.Data.Entity;
 	using System.Data.Entity.Migrations;
+	using System.Linq;
 
-	internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
+	internal sealed class Configuration : DbMigrationsConfiguration<ToDo.Models.ApplicationDbContext>
 	{
 		public Configuration()
 		{
-			AutomaticMigrationsEnabled = true;
+			AutomaticMigrationsEnabled = false;
 		}
 
-		protected override void Seed(ApplicationDbContext context)
+		protected override void Seed(ToDo.Models.ApplicationDbContext context)
 		{
-			context.Importances.AddOrUpdate(
-			p => p.Name,
-			new Importance { Id = 1, Name = "Запланировано", ColorClass = "warning", IconImage = "glyphicon glyphicon-exclamation-sign" },
-			new Importance { Id = 2, Name = "В работе", ColorClass = "active", IconImage = "glyphicon glyphicon-refresh" },
-			new Importance { Id = 3, Name = "Выполнено", ColorClass = "success", IconImage = "glyphicon glyphicon-ok" }
-			);
+			//  This method will be called after migrating to the latest version.
+
+			//  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+			//  to avoid creating duplicate seed data. E.g.
+			//
+			//    context.People.AddOrUpdate(
+			//      p => p.FullName,
+			//      new Person { FullName = "Andrew Peters" },
+			//      new Person { FullName = "Brice Lambson" },
+			//      new Person { FullName = "Rowan Miller" }
+			//    );
+			//
 		}
 	}
 }
