@@ -83,6 +83,44 @@
 		</div>
 	</div>
 	<!--/ko-->
+	<!--ko if: page() == 'ColorReferenceBook'-->
+	<div>
+		<h3>Справочник «Раскраска строк»</h3>
+		<table class="table">
+			<caption>
+				Возможные варианты раскраски строки
+			</caption>
+			<thead>
+				<tr>
+					<th>Наименование</th>
+					<th>Значение</th>
+				</tr>
+			</thead>
+			<tbody data-bind="foreach: colorClasses">
+				<tr data-bind="css: Value">
+					<th data-bind="text: Name"></th>
+					<td data-bind="text: Value"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!--/ko-->
+	<!--ko if: page() == 'IconReferenceBook'-->
+	<div>
+		<h3>Справочник «Иконка состояния задачи»</h3>
+		<div class="bs-glyphicons">
+			<h5>
+				Возможные варианты иконки состояния задачи
+			</h5>
+			<ul class="bs-glyphicons-list" data-bind="foreach: iconClasses">
+				<li>
+					<span aria-hidden="true" data-bind="css: Value"></span>
+					<span class="glyphicon-class" data-bind="text: Value"></span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--/ko-->
 	<!--ko if: page() == 'Importance'-->
 	<div>
 		<h3>Справочник «Важность»</h3>
@@ -149,39 +187,6 @@
 			</tbody>
 		</table>
 		@*ToDo: Сделать позже выпадающим списком.*@
-		<table class="table">
-			<caption>
-				Возможные варианты раскраски строки
-			</caption>
-			<thead>
-				<tr>
-					<th>№</th>
-					<th>Цвет</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class="active">
-					<th scope="row">1</th>
-					<td>active</td>
-				</tr>
-				<tr class="success">
-					<th scope="row">2</th>
-					<td>success</td>
-				</tr>
-				<tr class="info">
-					<th scope="row">3</th>
-					<td>info</td>
-				</tr>
-				<tr class="warning">
-					<th scope="row">4</th>
-					<td>warning</td>
-				</tr>
-				<tr class="danger">
-					<th scope="row">5</th>
-					<td>danger</td>
-				</tr>
-			</tbody>
-		</table>
 		<div class="bs-docs-section">
 			<p>Возможные варианты иконок</p>
 			<div class="bs-glyphicons">
@@ -476,6 +481,9 @@
 				self.error = ko.observable();
 
 				self.importances = ko.observableArray([]);
+				self.colorClasses = ko.observableArray([]);
+				self.iconClasses = ko.observableArray([]);
+
 				self.currentImportance = ko.observable();
 				self.importanceName = ko.observable();
 				self.importanceColorClass = ko.observable();
@@ -562,6 +570,28 @@
 					self.goToPage('Login');
 				};
 
+				self.goToColor = function () {
+					if (isNull(self.user()))
+						self.goToPage('Login');
+					else {
+						$.get(self.links().colorClasses, function (data) {
+							self.colorClasses(data);
+							self.goToPage('ColorReferenceBook');
+						}, "json");
+					}
+				};
+
+				self.goToImage = function () {
+					if (isNull(self.user()))
+						self.goToPage('Login');
+					else {
+						$.get(self.links().iconClasses, function (data) {
+							self.iconClasses(data);
+							self.goToPage('IconReferenceBook');
+						}, "json");
+					}
+				};
+
 				self.goToImportance = function () {
 					if (isNull(self.user()))
 						self.goToPage('Login');
@@ -619,7 +649,7 @@
 						}
 					}, error);
 				};
-				
+
 				self.addTask = function (current) {
 					jsonRequest(self.links().task, 'POST', {
 						Description: self.taskDescription(),
@@ -646,11 +676,6 @@
 					}, error);
 				};
 
-
-
-
-
-
 				self.goToPage('Login')
 				$('#section_content').show();
 				$('#main_navbar').show();
@@ -660,7 +685,9 @@
 				register: '@Url.Content("~/api/Account/Register")',
 				importances: '@Url.Content("~/api/Importances")',
 				task: '@Url.Content("~/api/Tasks")',
-				newTask: '@Url.Content("~/api/Tasks/NewTask")'
+				newTask: '@Url.Content("~/api/Tasks/NewTask")',
+				colorClasses: '@Url.Content("~/api/ColorClasses")',
+				iconClasses: '@Url.Content("~/api/IconClasses")'
 			};
 			ko.applyBindings(new toDoViewModel(links));
 		});

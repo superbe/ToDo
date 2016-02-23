@@ -22,11 +22,13 @@
 				<ul class="nav navbar-nav">
 					<li><a href="#" data-bind="click: goToHome">ToDo</a></li>
 					@*<li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>*@
-					<!--ko if: page() == 'Home' || page() == 'Importance'-->
+					<!--ko if: page() == 'Home' || page() == 'ColorReferenceBook' || page() == 'IconReferenceBook' || page() == 'StateReferenceBook'-->
 					<li>
 						<div class="dropdown">
 							<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Правка <span class="caret"></span></button>
 							<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+								<li><a href="#" data-bind="click: goToColor">Справочник «Раскраска строк»</a></li>
+								<li><a href="#" data-bind="click: goToImage">Справочник «Иконка состояния»</a></li>
 								<li><a href="#" data-bind="click: goToImportance">Справочник «Важность»</a></li>
 								<li role="separator" class="divider"></li>
 								<li><a href="#" data-bind="click: goToHome">Списки задач</a></li>
